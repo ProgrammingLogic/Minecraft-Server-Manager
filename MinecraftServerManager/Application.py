@@ -100,7 +100,7 @@ def process_arguments(arguments, letterValues):
                     if letterValue in letterValues:
                         options[letterValues[letterValue]] = True
                     else:
-                        raise Exception(f"""{letterValue} is an invalid option. Please try """)
+                        raise InvalidArgument(letterValue)
 
     return options
 
