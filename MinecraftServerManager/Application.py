@@ -1,6 +1,8 @@
 from processes import EventProcess, PacketProcess
 from exceptions import InvalidArguments
 
+from multiprocessing import Queue
+
 import json
 import sys
 
@@ -8,11 +10,13 @@ import sys
 class Application():
     def __init__(self, options):
         self.store_options(options)
-        self.event_queue = []
+        self.event_queue = Queue()
+        self.running = True
         self.processes = {}
 
         self.add_process('EventProcess', EventProcess(application=self))
         self.add_process('PacketProcess', PacketProcess(application=self, host=options['host'], port=options['port']))
+        print(self)
 
 
     def start(self):
@@ -21,6 +25,7 @@ class Application():
         """
         for process in self.processes.values():
             process.start()
+            #print(process._popen)
 
 
     def add_process(self, name, process):
@@ -42,7 +47,7 @@ class Application():
 
         :param event:
         """
-        self.event_queue.append(event)
+        self.event_queue.put(event)
 
 
     def pull_event(self):
@@ -51,7 +56,7 @@ class Application():
 
         :return item: The item at the front of the queue.
         """
-        return self.event_queue.pop(0)
+        return self.event_queue.get_nowait()
 
 
     def no_events(self):
@@ -60,10 +65,17 @@ class Application():
 
         :return boolean: Whether or not there are events in the queue.
         """
-        if len(self.event_queue) < 1:
+        if self.event_queue.empty():
             return True
         else:
             return False
+    
+    def stop(self):
+        for name in self.processes:
+            self.processes[name].terminate()
+
+        self.running = False
+
 
 
 def process_arguments(arguments, letterValues):
@@ -125,6 +137,10 @@ def main():
     options = init_application()
     app = Application(options)
     app.start()
+
+    while app.running:
+        pass
+        
 
 
 if __name__ == '__main__':

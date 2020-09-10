@@ -37,9 +37,6 @@ class EventProcess(Process):
         :param event: The event to be ran.
         """
         if event['title'] == 'stop':
-            for name, process in processes.items():
-                process.run({'type': name, 'title': 'stop'})
-                
-            self.terminate()
+            print(self.application)
             self.application.stop()
 

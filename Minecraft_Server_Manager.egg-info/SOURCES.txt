@@ -1,0 +1,7 @@
+README.md
+setup.py
+Minecraft_Server_Manager.egg-info/PKG-INFO
+Minecraft_Server_Manager.egg-info/SOURCES.txt
+Minecraft_Server_Manager.egg-info/dependency_links.txt
+Minecraft_Server_Manager.egg-info/requires.txt
+Minecraft_Server_Manager.egg-info/top_level.txt

@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: Minecraft-Server-Manager
+Version: 0.0.1
+Summary: A Python Application to easily manage and intergrate Minecraft Servers.
+Home-page: com.jstiverson
+Author: Jonathyn Stiverson
+Author-email: jstiverson2002@gmail.com
+License: UNKNOWN
+Description: # Minecraft-Server-Manager
+        A Python Application to easily manage and intergrate Minecraft Servers.
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: <=3.8
+Description-Content-Type: text/markdown
