@@ -1,5 +1,5 @@
 from flask import Flask
-from config import Config
+from Config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
@@ -10,5 +10,5 @@ app.config.from_object(app_config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from app import models
+from app.models import User
 from app import routes
