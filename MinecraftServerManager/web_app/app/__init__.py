@@ -3,12 +3,10 @@ from Config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-app_config = Config()
-
 app = Flask(__name__)
-app.config.from_object(app_config)
+app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from app.models import User
-from app import routes
+from models import User
+from routes import routes
