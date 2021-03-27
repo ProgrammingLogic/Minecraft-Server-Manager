@@ -1,9 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
-from workzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from random import choices
 
 from string import ascii_letters as LETTERS
-from string import ascii_digits as DIGITS
+from string import digits as DIGITS
 
 class User(db.Model):
     """
