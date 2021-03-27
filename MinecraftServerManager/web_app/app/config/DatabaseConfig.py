@@ -1,7 +1,7 @@
 import os
 base_dir = os.path.abspath(os.path.dirname(__file__))
 
-class Config(object):
+class DatabaseConfig(object):
     """
     Configuration for the web app.
 
