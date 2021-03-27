@@ -5,6 +5,8 @@ from random import choices
 from string import ascii_letters as LETTERS
 from string import digits as DIGITS
 
+from app import app, db
+
 class User(db.Model):
     """
     A User of the website.
