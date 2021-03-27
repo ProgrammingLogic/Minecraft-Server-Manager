@@ -20,7 +20,7 @@ def User_create(app, db):
             set_password -- Set the user's password.
         """
         id = db.Column(db.Integer, primary_key=True)
-        username = db.Column(db.Stirng(80), nullable=False)
+        username = db.Column(db.String(80), nullable=False)
         email = db.Column(db.String(120), unique=True, nullable=False)
 
 
@@ -63,7 +63,7 @@ def User_create(app, db):
         def create_user_id(self):
             """
             Generates a unique user ID.
-            
+
             Arguments:
                 None
 
@@ -84,7 +84,7 @@ def User_create(app, db):
         def set_password(self, password):
             """
             Sets the user's password.
-            
+
             Arguments:
                 password -- The new password.
 
@@ -101,7 +101,7 @@ def User_create(app, db):
                 raise Exception("Password is the same as previous password.")
 
             self.password = ps_hash
-        
+
 
         def check_password(self, password):
             """
@@ -120,5 +120,4 @@ def User_create(app, db):
             return check_password(self.password_hash, password)
 
     return User
-
 

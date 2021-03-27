@@ -1,7 +1,7 @@
 import os
 
 def create_routes(app, db):
-    for file_ in os.listdir(os.path.abspath('./models')):
+    for file_ in os.listdir(os.path.abspath('./routes')):
         # Making sure it's a python file.
         if '.' in file_:
             file_name = '.'.join(file_.split('.')[:-1])
@@ -15,4 +15,4 @@ def create_routes(app, db):
         else:
             exec(f"""from .{file_name} import {file_name}_create""")
 
-        exec(f"""routes['{file_name}'] = {file_name}_create(app, db)""")
+        exec(f"""{file_name}_create(app, db)""")

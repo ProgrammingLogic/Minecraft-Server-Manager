@@ -21,3 +21,4 @@ def import_models(app, db):
         exec(f"""models['{file_name}'] = {file_name}_create(app, db)""")
 
     return models
+
