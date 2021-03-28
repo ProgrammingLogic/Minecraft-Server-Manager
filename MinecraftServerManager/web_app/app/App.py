@@ -5,6 +5,18 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 
 class FlaskApp():
+    """
+    The master app object for the web app.
+
+    Fields:
+        app -- The Flask app object running the flask application.
+        db -- The SQLAlchemy Database object handing databases.
+        migrate - The flask_migrate object handling database migration.
+
+
+    Methods:
+
+    """
     def __init__(self):
         self.init_app()
         self.init_db()
@@ -13,7 +25,19 @@ class FlaskApp():
 
 
     def init_app(self):
-        """Initialize the app."""
+        """
+        Initialize the app.
+
+        Arguments:
+            None
+
+        Keyword Arguments:
+            None
+
+        Return Values:
+            None
+
+        """
         self.app = Flask(__name__)
         self.app.config.from_object(Config)
         self.db = SQLAlchemy(self.app)
@@ -45,7 +69,18 @@ class FlaskApp():
 
 
     def init_login_manager(self):
-        """Initialize the login manager."""
+        """
+        Initialize the app's login manager.
+
+        Arguments:
+            None
+
+        Keyword Arguments:
+            None
+
+        Return Values:
+            None
+        """
         self.login_manager = LoginManager()
         self.login_manager.init_app(self.app)
 
@@ -55,7 +90,18 @@ class FlaskApp():
 
 
     def init_routes(self):
-        """Initialize the routes."""
+        """
+        Initialize the routes.
+
+        Arguments:
+            None
+
+        Keyword Arguments:
+            None
+
+        Return Values:
+            None
+        """
         from routes import create_routes
         create_routes(self)
 
