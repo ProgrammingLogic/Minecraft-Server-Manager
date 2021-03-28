@@ -6,7 +6,9 @@ from string import ascii_letters as LETTERS
 from string import digits as DIGITS
 
 
-def User_create(app, db):
+def User_create(FlaskApp):
+    db = FlaskApp.db
+
     class User(db.Model):
         """
         A User of the website.
@@ -57,7 +59,7 @@ def User_create(app, db):
             else:
                 self.email = email
 
-            self.id = create_user_id()
+            self.id = self.create_user_id()
 
 
         def create_user_id(self):
@@ -73,10 +75,10 @@ def User_create(app, db):
             Returns:
                 None
             """
-            new_id = choices(LETTERS + DIGITS, 30)
+            new_id = ''.join(choices(LETTERS + str(DIGITS), k=30))
 
             while not self.query.filter_by(id=new_id).first() is None:
-                new_id = choices(LETTERS + DIGITS, 30)
+                new_id = ''.join(choices(LETTERS + str(DIGITS), k=30))
 
             return new_id
 

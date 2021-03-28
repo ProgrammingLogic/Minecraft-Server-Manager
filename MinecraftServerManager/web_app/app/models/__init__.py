@@ -1,7 +1,7 @@
 import os
 
 
-def import_models(app, db):
+def import_models(FlaskApp):
     models = {}
 
     for file_ in os.listdir(os.path.abspath('./models')):
@@ -18,7 +18,7 @@ def import_models(app, db):
         else:
             exec(f"""from .{file_name} import {file_name}_create""")
 
-        exec(f"""models['{file_name}'] = {file_name}_create(app, db)""")
+        exec(f"""models['{file_name}'] = {file_name}_create(FlaskApp)""")
 
     return models
 

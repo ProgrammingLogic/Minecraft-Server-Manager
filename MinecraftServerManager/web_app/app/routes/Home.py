@@ -1,7 +1,10 @@
 from flask import render_template
 
 
-def Home_create(app, db):
+def Home_create(FlaskApp):
+    app = FlaskApp.app
+    db = FlaskApp.db
+
     @app.route('/')
     @app.route('/index.html')
     @app.route('/home')
